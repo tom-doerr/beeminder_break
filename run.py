@@ -47,6 +47,4 @@ def enable_breaks(break_start, break_end):
         sum_ = goal.get_data_sum(now)
         needed = goal.get_needed(now)
 
-print(token())
-print(username())
 main()
