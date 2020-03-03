@@ -1,17 +1,22 @@
+#! python3
+
 import time
 import datetime
 from pyminder.pyminder import Pyminder
 
 def main():
-    break_start = datetime.datetime(2019,12,23)
-    break_end = datetime.datetime(2019,12,28)
+    break_start = datetime.datetime(2020,3,14)
+    break_end = datetime.datetime(2020,3,15)
     enable_breaks(break_start, break_end)
 
 def token():
-    return open("token.secret").read()
+    return open("token.secret").read().rstrip()
+
+def username():
+    return open("username").read().rstrip()
 
 def enable_breaks(break_start, break_end):
-    pyminder = Pyminder(user='[your username - dummy field]', token=token())
+    pyminder = Pyminder(user=username(), token=token())
 
     goals = pyminder.get_goals()
 
@@ -42,4 +47,6 @@ def enable_breaks(break_start, break_end):
         sum_ = goal.get_data_sum(now)
         needed = goal.get_needed(now)
 
+print(token())
+print(username())
 main()
